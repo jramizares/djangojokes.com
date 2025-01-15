@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
 
     # Local apps
+    'common.apps.CommonConfig',
     'jokes.apps.JokesConfig',
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
