@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for djangojokes project.
 
@@ -9,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'jokes.apps.JokesConfig',
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
+    'jobs.apps.JobsConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +141,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# BOTTOM OF settings.py
+if os.environ.get('ENVIRONMENT') != 'production':
+    from .local_settings import *
+# DON'T PUT ANYTHING BELOW THIS
