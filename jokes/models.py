@@ -25,11 +25,12 @@ class Category(models.Model):
     
     class Meta:
         verbose_name_plural = 'Categories'
+        ordering = ['category']
 
 class Joke(models.Model):
     question = models.TextField(max_length=200)
     answer = models.TextField(max_length=100, blank=True)
-    category = models.ForeignKey('Category', on_delete=models.PROTECT)
+    category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
     tags = models.ManyToManyField('Tag')
     slug = models.SlugField(
         max_length=50, unique=True, null=False, editable=False
@@ -69,3 +70,6 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.tag
+    
+    class Meta:
+        ordering = ['tag']
