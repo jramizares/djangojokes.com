@@ -23,7 +23,7 @@ class JokeDeleteView(UserPassesTestMixin, DeleteView):
     model = Joke
     success_url = reverse_lazy('jokes:list')
 
-    def delete(self, requet, *args, **kwargs):
+    def delete(self, request, *args, **kwargs):
         result = super().delete(request, *args, **kwargs)
         return result
 
